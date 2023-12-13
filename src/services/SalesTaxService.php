@@ -567,7 +567,6 @@ class SalesTaxService extends Component
 
         // Add each line item to the transaction
         foreach ($order->lineItems as $lineItem) {
-
             // Our product has the avatax tax category specified
             if ($lineItem->taxCategory->handle === 'avatax') {
                 $taxCode = $defaultTaxCode;
@@ -584,7 +583,7 @@ class SalesTaxService extends Component
 
                 // amount, $quantity, $itemCode, $taxCode)
                 $t = $t->withLine(
-                    abs($lineItem->subtotal),// Total amount for the line item
+                    abs($lineItem->subtotal), // Total amount for the line item
                     $lineItem->qty,         // Quantity
                     $itemCode,              // Item Code
                     $taxCode                // Tax Code - Default or Custom Tax Code.
@@ -603,7 +602,6 @@ class SalesTaxService extends Component
             /** @var OrderAdjustment $adjustment */
 
             if ($adjustment->type === 'discount') {
-
                 // if the discount is for a specific lineItem make sure the discountCode
                 // for this adjustment matches the lineItem tax code
                 if ($adjustmentLineItem = $adjustment->getLineItem()) {
